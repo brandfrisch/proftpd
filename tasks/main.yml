@@ -1,0 +1,49 @@
+---
+# tasks file for proftpd
+
+- name: Install proftpd packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ proftpd_packages }}"
+    - "{{ proftpd_additional_packages }}"
+  tags:
+    - package
+    - proftpd
+
+- name: Configure ftpasswd
+  template:
+    src: "{{ item }}"
+    dest: "/etc/proftpd/ftpd.passwd"
+    owner: proftpd
+    group: root
+    mode: 0640
+  notify:
+    - reload proftpd
+  with_items:
+    - "{{ proftpd_passwd_file }}"
+  tags:
+    - config
+    - proftpd
+
+- name: Configure proftpd
+  template:
+    src: "{{ item }}"
+    dest: "/etc/proftpd/conf.d/{{ item | basename | replace('.j2', '') }}"
+  notify:
+    - restart proftpd
+  with_items:
+    - "{{ proftpd_config_files }}"
+  tags:
+    - config
+    - proftpd
+
+- name: Start proftpd
+  service:
+    name: proftpd
+    state: started
+    enabled: true
+  tags:
+    - service
+    - proftpd

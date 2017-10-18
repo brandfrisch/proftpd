@@ -1,0 +1,10 @@
+---
+# defaults file for proftpd
+
+proftpd_packages:
+  - proftpd-basic
+proftpd_additional_packages: []
+
+proftpd_config_files: []
+
+proftpd_passwd_file: []

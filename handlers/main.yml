@@ -1,0 +1,22 @@
+---
+# handlers file for proftpd
+
+- name: restart proftpd
+  service:
+    name: proftpd
+    state: restarted
+
+- name: start proftpd
+  service:
+    name: proftpd
+    state: started
+
+- name: stop proftpd
+  service:
+    name: proftpd
+    state: stopped
+
+- name: reload proftpd
+  service:
+    name: proftpd
+    state: reloaded

@@ -1,0 +1,38 @@
+---
+- hosts: all
+  gather_facts: false
+  vars:
+    goss:
+      port:
+        tcp:21:
+          listening: true
+          ip:
+          - 0.0.0.0
+      service:
+        proftpd:
+          enabled: true
+          running: true
+      user:
+        proftpd:
+          exists: true
+          uid: 105
+          gid: 65534
+          groups:
+          - nogroup
+          home: /run/proftpd
+          shell: /bin/false
+      process:
+        proftpd:
+          running: true
+
+  pre_tasks:
+
+    - name: Copy tests to remote
+      copy:
+        content: "{{ goss | to_nice_yaml }}"
+        dest: "/tmp/goss.yml"
+
+    - name: test goss files
+      goss:
+        path: "/tmp/goss.yml"
+        format: documentation

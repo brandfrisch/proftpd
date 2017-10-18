@@ -1,0 +1,14 @@
+---
+- hosts: all
+  vars:
+    proftpd_additional_packages:
+      - ssl-cert
+    proftpd_config_files:
+      - tests/templates/tls.conf.j2
+      - tests/templates/vuser.conf.j2
+      - tests/templates/security.conf.j2
+    proftpd_passwd_file:
+      - tests/templates/ftpd.passwd.j2
+
+  roles:
+    - role: proftpd

@@ -1,0 +1,11 @@
+---
+docker:
+  containers:
+    - name: proftpd-ubuntu-16-04
+      image: brandfrisch/ubuntu-16.04
+      image_version: 'latest'
+      command: /lib/systemd/systemd
+      privileged: true
+
+verifier:
+  name: goss

@@ -1,0 +1,14 @@
+<IfModule mod_tls.c>
+
+	TLSEngine                               on
+	TLSLog                                  /var/log/proftpd/tls.log
+	TLSProtocol                             SSLv23
+
+	TLSRSACertificateFile                   /etc/ssl/certs/ssl-cert-snakeoil.pem
+	TLSRSACertificateKeyFile                /etc/ssl/private/ssl-cert-snakeoil.key
+	TLSRequired                             on
+
+    TLSVerifyClient 						off
+    TLSRenegotiate 							none
+
+</IfModule>
