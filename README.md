@@ -1,4 +1,4 @@
-proftpd [![Build Status](https://travis-ci.org/brandfrisch/proftpd.svg?branch=master)](https://travis-ci.org/brandfrisch/proftpd)
+proftpd
 =========
 
 This is a rule to setup proftpd on a unix system

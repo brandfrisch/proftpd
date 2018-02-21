@@ -31,6 +31,9 @@
   template:
     src: "{{ item }}"
     dest: "/etc/proftpd/conf.d/{{ item | basename | replace('.j2', '') }}"
+    owner: root
+    group: root
+    mode: 0644
   notify:
     - restart proftpd
   with_items:
