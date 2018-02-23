@@ -1,0 +1,22 @@
+---
+port:
+  tcp:21:
+    listening: true
+    ip:
+      - 0.0.0.0
+service:
+  proftpd:
+    enabled: true
+    running: true
+user:
+  proftpd:
+    exists: true
+    uid: 105
+    gid: 65534
+    groups:
+      - nogroup
+    home: /run/proftpd
+    shell: /bin/false
+process:
+  proftpd:
+    running: true
