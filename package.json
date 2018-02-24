@@ -13,6 +13,7 @@
   },
   "homepage": "https://github.com/brandfrisch/proftpd#readme",
   "release": {
+    "tagFormat": "${version}",
     "verifyConditions": [],
     "publish": [
       {
